@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddConfiguration(configuration);
 builder.Services.AddServices();
 
-var origin = configuration.GetValue<string>("Origin") ?? throw new NullReferenceException("The origin is empty.");
+var origin = configuration.GetValue<string>("Origin") ?? throw new NullReferenceException("The origin is missing.");
 builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
     policyBuilder =>
     {
@@ -34,6 +34,7 @@ app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
