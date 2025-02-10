@@ -30,7 +30,15 @@ public static class ServiceCollectionExtension
     {
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IAuthService, AuthService>();
+        services.AddTransient<IJwtService, JwtService>();
 
+        return services;
+    }
+
+    public static IServiceCollection AddOptions(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<JwtSettingsOption>(options =>
+            configuration.GetSection(nameof(JwtSettingsOption)).Bind(options));
         return services;
     }
 
