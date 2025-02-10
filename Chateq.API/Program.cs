@@ -1,5 +1,4 @@
-using Chateq.Core.Domain;
-using Microsoft.EntityFrameworkCore;
+using Chateq.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -11,10 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = configuration.GetValue<string>("ConnectionString");
-builder.Services.AddDbContext<ChateqDbContext>(options =>
-    options.UseSqlServer(connectionString)
-);
+builder.Services.AddConfiguration(configuration);
 
 var app = builder.Build();
 
