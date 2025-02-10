@@ -14,10 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Chateq.Core.Domain\Chateq.Core.Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers\" />
+      <ProjectReference Include="..\Chateq.Infrastructure\Chateq.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

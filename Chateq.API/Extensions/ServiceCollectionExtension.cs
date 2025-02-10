@@ -1,4 +1,6 @@
 using Chateq.Core.Domain;
+using Chateq.Core.Domain.Interfaces.Repositories;
+using Chateq.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chateq.API.Extensions;
@@ -13,6 +15,12 @@ public static class ServiceCollectionExtension
             options.UseSqlServer(connectionString)
         );
 
+        return services;
+    }
+
+    public static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        services.AddTransient<IUserRepository, UserRepository>();
         return services;
     }
 }
