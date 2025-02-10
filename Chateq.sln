@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.API", "Chateq.API\Chateq.API.csproj", "{0E9BDDAD-E996-49E6-99C5-6D763442AD45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Domain", "Chateq.Core.Domain\Chateq.Core.Domain.csproj", "{5FF8AE6C-FEA0-4BE5-AF3D-A5D589E0CF47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Infrastructure", "Chateq.Infrastructure\Chateq.Infrastructure.csproj", "{9FBBB45B-7EF7-48C7-8ADC-659087F26ABF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Application", "Chateq.Core.Application\Chateq.Core.Application.csproj", "{8DC1E9A2-C328-4AF6-A0EB-6C3CE38DCC6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E9BDDAD-E996-49E6-99C5-6D763442AD45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9BDDAD-E996-49E6-99C5-6D763442AD45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9BDDAD-E996-49E6-99C5-6D763442AD45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E9BDDAD-E996-49E6-99C5-6D763442AD45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF8AE6C-FEA0-4BE5-AF3D-A5D589E0CF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF8AE6C-FEA0-4BE5-AF3D-A5D589E0CF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF8AE6C-FEA0-4BE5-AF3D-A5D589E0CF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF8AE6C-FEA0-4BE5-AF3D-A5D589E0CF47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FBBB45B-7EF7-48C7-8ADC-659087F26ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FBBB45B-7EF7-48C7-8ADC-659087F26ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FBBB45B-7EF7-48C7-8ADC-659087F26ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FBBB45B-7EF7-48C7-8ADC-659087F26ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC1E9A2-C328-4AF6-A0EB-6C3CE38DCC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC1E9A2-C328-4AF6-A0EB-6C3CE38DCC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC1E9A2-C328-4AF6-A0EB-6C3CE38DCC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC1E9A2-C328-4AF6-A0EB-6C3CE38DCC6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
