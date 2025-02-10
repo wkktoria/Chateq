@@ -17,7 +17,7 @@ public class UserRepository(ChateqDbContext context, ILogger<UserRepository> log
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, $"Error occurred while adding user with Username: {user.Username}");
+            logger.LogError(ex, $"Error occurred while adding user with username: {user.Username}");
             throw;
         }
     }
@@ -30,14 +30,14 @@ public class UserRepository(ChateqDbContext context, ILogger<UserRepository> log
 
             if (user == null)
             {
-                logger.LogWarning($"Could not find user with Id: {id}");
+                logger.LogWarning($"Could not find user with ID: {id}");
             }
 
             return user;
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, $"Error occurred while fetching user with Id: {id}");
+            logger.LogError(ex, $"Error occurred while fetching user with ID: {id}");
             throw;
         }
     }
@@ -50,14 +50,14 @@ public class UserRepository(ChateqDbContext context, ILogger<UserRepository> log
 
             if (user == null)
             {
-                logger.LogWarning($"Could not find user with Username: {username}");
+                logger.LogWarning($"Could not find user with username: {username}");
             }
 
             return user;
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, $"Error occurred while fetching user with Username: {username}");
+            logger.LogError(ex, $"Error occurred while fetching user with username: {username}");
             throw;
         }
     }
