@@ -6,17 +6,26 @@ namespace Chateq.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthController(IAuthService authService) : Controller
+public class AuthController(IAuthService authService, ILogger<AuthController> logger) : Controller
 {
-    [HttpGet]
-    public async Task<JsonResult> GetUser()
+    [HttpPut("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterUserDto registerUser)
     {
-        await authService.RegisterUserAsync(new RegisterUserDto()
+        try
         {
-            Username = "test",
-            Password = "test",
-        });
-
-        return Json("");
+            await authService.RegisterUserAsync(registerUser);
+            return Ok(new { message = "User has been registered successfully." });
+        }
+        catch (InvalidOperationException ex)
+        {
+            logger.LogWarning(ex, $"Registration attempt failed: {ex.Message}");
+            return Conflict(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex,
+                $"An error occurred during registration for user with username: {registerUser.Username}");
+            return StatusCode(500, "An unexpected error occurred during registration.");
+        }
     }
 }
