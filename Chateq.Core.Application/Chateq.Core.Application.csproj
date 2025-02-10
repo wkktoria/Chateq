@@ -10,4 +10,8 @@
       <ProjectReference Include="..\Chateq.Core.Domain\Chateq.Core.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="8.0.4" />
+    </ItemGroup>
+
 </Project>

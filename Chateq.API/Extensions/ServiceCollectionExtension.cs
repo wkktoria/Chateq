@@ -1,5 +1,7 @@
+using Chateq.Core.Application.Services;
 using Chateq.Core.Domain;
 using Chateq.Core.Domain.Interfaces.Repositories;
+using Chateq.Core.Domain.Interfaces.Services;
 using Chateq.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +23,8 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddTransient<IUserRepository, UserRepository>();
+        services.AddTransient<IAuthService, AuthService>();
+        
         return services;
     }
 }

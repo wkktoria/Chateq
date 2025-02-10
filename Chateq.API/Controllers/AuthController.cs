@@ -1,23 +1,22 @@
-using Chateq.Core.Domain.Interfaces.Repositories;
-using Chateq.Core.Domain.Models;
+using Chateq.Core.Domain.DTOs;
+using Chateq.Core.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chateq.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthController(IUserRepository userRepository) : Controller
+public class AuthController(IAuthService authService) : Controller
 {
     [HttpGet]
     public async Task<JsonResult> GetUser()
     {
-        var user = new User()
+        await authService.RegisterUserAsync(new RegisterUserDto()
         {
-            Username = "user@1",
-            Password = "password@1",
-        };
+            Username = "test",
+            Password = "test",
+        });
 
-        await userRepository.AddUserAsync(user);
-        return Json(user);
+        return Json("");
     }
 }
