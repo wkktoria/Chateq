@@ -10,7 +10,7 @@ builder.Services.Configure<KafkaOption>(options
     => configuration.GetSection(nameof(KafkaOption)).Bind(options));
 
 var connectionString = configuration.GetValue<string>("ConnectionString");
-builder.Services.AddDbContext<ChateqDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContextFactory<ChateqDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddHostedService<KafkaConsumer>();
 
