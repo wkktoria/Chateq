@@ -30,11 +30,13 @@ public static class ServiceCollectionExtension
     {
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IAuthService, AuthService>();
-        
+
         services.AddTransient<IJwtService, JwtService>();
-        
+
         services.AddTransient<IChatRepository, ChatRepository>();
         services.AddTransient<IChatService, ChatService>();
+
+        services.AddSignalR();
 
         return services;
     }
@@ -65,6 +67,7 @@ public static class ServiceCollectionExtension
         {
             options.SaveToken = true;
             options.TokenValidationParameters = GetTokenValidationParameters(key);
+            options.Events = GetEvents();
         });
     }
 
@@ -78,6 +81,25 @@ public static class ServiceCollectionExtension
             ValidateAudience = false,
             ValidateLifetime = true,
             ClockSkew = TimeSpan.FromSeconds(120)
+        };
+    }
+
+    private static JwtBearerEvents GetEvents()
+    {
+        return new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["token"];
+                var path = context.HttpContext.Request.Path;
+
+                if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/messageHub"))
+                {
+                    context.Token = accessToken;
+                }
+
+                return Task.CompletedTask;
+            }
         };
     }
 }

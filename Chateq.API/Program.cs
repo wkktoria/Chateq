@@ -1,4 +1,5 @@
 using Chateq.API.Extensions;
+using Chateq.API.Hubs;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -61,6 +62,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
+
+app.MapHub<MessageHub>("/messageHub");
 
 app.UseAuthentication();
 app.UseAuthorization();
