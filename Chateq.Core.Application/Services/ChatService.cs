@@ -42,6 +42,7 @@ public class ChatService(IChatRepository chatRepository, IKafkaProducer kafkaPro
                 {
                     Id = m.Id,
                     Sender = m.Sender.Username,
+                    SenderId = m.SenderId,
                     MessageText = m.MessageText,
                     CreatedAt = m.CreatedAt,
                 }).ToHashSet()

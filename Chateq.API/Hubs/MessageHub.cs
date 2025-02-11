@@ -49,6 +49,7 @@ public class MessageHub(IUserConnectionService userConnectionService, IChatServi
             MessageText = message,
             ChatId = Guid.Parse(chatId),
             Sender = Username,
+            SenderId = Guid.Parse(UserId)
         };
     }
 
