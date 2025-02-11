@@ -9,19 +9,33 @@ namespace Chateq.API.Hubs;
 [Authorize]
 public class MessageHub(IUserConnectionService userConnectionService) : Hub
 {
-    public override Task OnConnectedAsync()
+    public override async Task OnConnectedAsync()
     {
         userConnectionService.AddConnection(Username, Context.ConnectionId);
-        return base.OnConnectedAsync();
+        await JoinChatAsync(MainChat);
+        await base.OnConnectedAsync();
     }
 
-    public override Task OnDisconnectedAsync(Exception? exception)
+    public override async Task OnDisconnectedAsync(Exception? exception)
     {
         userConnectionService.RemoveConnection(Username);
-        return base.OnDisconnectedAsync(exception);
+        await LeaveChatAsync(MainChat);
+        await base.OnDisconnectedAsync(exception);
+    }
+
+    private async Task JoinChatAsync(string chatName)
+    {
+        await Groups.AddToGroupAsync(Context.ConnectionId, chatName);
+    }
+
+    private async Task LeaveChatAsync(string chatName)
+    {
+        await Groups.RemoveFromGroupAsync(Context.ConnectionId, chatName);
     }
 
     private string Username => userConnectionService.GetClaimValue(Context.User, ClaimTypes.NameIdentifier);
 
     private string UserId => userConnectionService.GetClaimValue(Context.User, JwtRegisteredClaimNames.Jti);
+
+    private const string MainChat = "global";
 }
