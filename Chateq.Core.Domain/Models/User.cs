@@ -10,6 +10,8 @@ public class User
 
     public DateTime CreatedAt { get; set; }
 
+    public ICollection<Message> Messages { get; set; } = [];
+
     public User(string username, string password)
     {
         Id = Guid.NewGuid();
