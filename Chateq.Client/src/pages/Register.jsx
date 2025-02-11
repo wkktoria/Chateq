@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError("");
-    setSuccess("");
+    setErrorMessage("");
+    setSuccessMessage("");
 
     const data = {
       username: username,
@@ -33,9 +33,11 @@ const Register = () => {
         throw new Error(message);
       }
 
-      setSuccess("Registration has been successful!");
+      setSuccessMessage("Registration has been successful!");
     } catch (error) {
-      setError(`There was a problem during the registration: ${error.message}`);
+      setErrorMessage(
+        `There was a problem during the registration: ${error.message}`
+      );
     }
   };
 
@@ -43,8 +45,8 @@ const Register = () => {
     <Container className="d-flex align-items-center justify-content-center vh-100">
       <div className="w-100" style={{ maxWidth: "400px" }}>
         <h2 className="text-center mb-4">Register</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
-        {success && <Alert variant="success">{success}</Alert>}
+        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+        {successMessage && <Alert variant="success">{successMessage}</Alert>}
 
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formUsername">
