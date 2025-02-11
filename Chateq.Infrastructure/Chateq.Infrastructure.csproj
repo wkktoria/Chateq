@@ -10,4 +10,8 @@
       <ProjectReference Include="..\Chateq.Core.Domain\Chateq.Core.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Confluent.Kafka" Version="2.8.0" />
+    </ItemGroup>
+
 </Project>

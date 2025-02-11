@@ -1,9 +1,11 @@
 using System.Text;
 using Chateq.Core.Application.Services;
 using Chateq.Core.Domain;
+using Chateq.Core.Domain.Interfaces.Producers;
 using Chateq.Core.Domain.Interfaces.Repositories;
 using Chateq.Core.Domain.Interfaces.Services;
 using Chateq.Core.Domain.Options;
+using Chateq.Infrastructure.Producers;
 using Chateq.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -35,10 +37,12 @@ public static class ServiceCollectionExtension
 
         services.AddTransient<IChatRepository, ChatRepository>();
         services.AddTransient<IChatService, ChatService>();
+        
+        services.AddTransient<IKafkaProducer, KafkaProducer>();
+        
+        services.AddSingleton<IUserConnectionService, UserConnectionService>();
 
         services.AddSignalR();
-
-        services.AddSingleton<IUserConnectionService, UserConnectionService>();
 
         return services;
     }
@@ -47,6 +51,8 @@ public static class ServiceCollectionExtension
     {
         services.Configure<JwtSettingsOption>(options =>
             configuration.GetSection(nameof(JwtSettingsOption)).Bind(options));
+        services.Configure<KafkaOption>(options =>
+            configuration.GetSection(nameof(KafkaOption)).Bind(options));
         return services;
     }
 
