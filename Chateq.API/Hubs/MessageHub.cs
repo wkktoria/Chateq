@@ -22,6 +22,11 @@ public class MessageHub(IUserConnectionService userConnectionService) : Hub
         await LeaveChatAsync(MainChat);
         await base.OnDisconnectedAsync(exception);
     }
+    
+    public async Task SendMessageToChatAsync(string chatId, string message)
+    {
+        await Clients.Group(MainChat).SendAsync("ReceiveMessage", Username, message);
+    }
 
     private async Task JoinChatAsync(string chatName)
     {
@@ -37,5 +42,5 @@ public class MessageHub(IUserConnectionService userConnectionService) : Hub
 
     private string UserId => userConnectionService.GetClaimValue(Context.User, JwtRegisteredClaimNames.Jti);
 
-    private const string MainChat = "global";
+    private const string MainChat = "Global";
 }
