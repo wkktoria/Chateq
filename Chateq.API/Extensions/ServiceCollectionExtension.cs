@@ -31,6 +31,7 @@ public static class ServiceCollectionExtension
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IAuthService, AuthService>();
         services.AddTransient<IJwtService, JwtService>();
+        services.AddTransient<IChatRepository, ChatRepository>();
 
         return services;
     }
