@@ -38,6 +38,8 @@ public static class ServiceCollectionExtension
 
         services.AddSignalR();
 
+        services.AddSingleton<IUserConnectionService, UserConnectionService>();
+
         return services;
     }
 
