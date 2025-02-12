@@ -1,5 +1,9 @@
 # Chateq
 
+Chateq is a real-time communication application designed to facilitate instant messaging between users.
+It supports text messages, includes features for message history, and provides user authentication for secure access.
+Users can create accounts, log in, and view past conversations.
+
 ## Running Application
 
 ### Requirements
