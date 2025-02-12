@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Chat from "./pages/Chat";
 
 function App() {
@@ -106,6 +106,12 @@ function App() {
     setIsLoggedIn(true);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("expiryDate");
+    setIsLoggedIn(false);
+  };
+
   const onSendMessage = async (chatId, message) => {
     if (connection) {
       try {
@@ -156,6 +162,13 @@ function App() {
 
   return (
     <Router>
+      {isLoggedIn && (
+        <div className="position-absolute top-0 end-0">
+          <Button variant="warning" className="m-2" onClick={handleLogout}>
+            Logout
+          </Button>
+        </div>
+      )}
       <Routes>
         <Route
           path="/login"
@@ -175,9 +188,9 @@ function App() {
           path="/chat"
           element={
             isLoggedIn ? (
-              <Container className="mt-4">
+              <Container>
                 <Row>
-                  <Col md={12}>
+                  <Col>
                     <Chat
                       messages={messages}
                       onSendMessage={onSendMessage}

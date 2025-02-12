@@ -78,7 +78,7 @@ const Register = () => {
 
         <div className="mt-3 text-center">
           <p>
-            Already have an account? <Link to="/login">Log in here.</Link>
+            Already have an account? <Link to="/login">Log in here</Link>.
           </p>
         </div>
       </div>

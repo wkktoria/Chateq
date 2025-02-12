@@ -83,7 +83,7 @@ function Login({ onLogin }) {
 
         <div className="mt-3 text-center">
           <p>
-            Do not have an account? <Link to="/register">Register here.</Link>
+            Do not have an account? <Link to="/register">Register here</Link>.
           </p>
         </div>
       </div>

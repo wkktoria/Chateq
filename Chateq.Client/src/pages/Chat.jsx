@@ -31,7 +31,7 @@ function Chat({ messages, onSendMessage, currentChat, onLoadOlderMessages }) {
   }, [messages, hasInitialLoad]);
 
   useEffect(() => {
-    if (hasInitialLoad && isScrolledToBottom()) {
+    if (hasInitialLoad && !isScrolledToBottom()) {
       scrollToBottom();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -104,7 +104,10 @@ function Chat({ messages, onSendMessage, currentChat, onLoadOlderMessages }) {
 
   return (
     <Container className="d-flex flex-column align-items-center vh-100">
-      <div className="w-100" style={{ maxWidth: "600px" }}>
+      <div
+        className="w-100 p-3 border bg-light mt-4"
+        style={{ maxWidth: "600px" }}
+      >
         <div className="text-center">
           <h4>{chat?.name} Chat</h4>
         </div>
@@ -118,10 +121,9 @@ function Chat({ messages, onSendMessage, currentChat, onLoadOlderMessages }) {
               // eslint-disable-next-line react/prop-types
               .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
               .map((msg, index) => (
-                <ListGroup.Item key={index}>
-                  <strong>
-                    {msg.sender}: {msg.message}
-                  </strong>
+                <ListGroup.Item key={index} className="m-1 rounded">
+                  <small className="d-block">{msg.sender}</small>
+                  <strong>{msg.message}</strong>
                 </ListGroup.Item>
               ))}
             <div ref={messagesEndRef}></div>
@@ -136,8 +138,9 @@ function Chat({ messages, onSendMessage, currentChat, onLoadOlderMessages }) {
               onChange={(event) => setMessage(event.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Enter your message..."
+              className="shadow-none"
             />
-            <Button variant="primary" onClick={handleSendMessage}>
+            <Button variant="success" onClick={handleSendMessage}>
               Send
             </Button>
           </InputGroup>
