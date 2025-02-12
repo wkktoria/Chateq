@@ -5,6 +5,7 @@
 
 Chateq.API/appsettings*.json
 Chateq.MessageBroker/appsettings*.json
+Chateq.AppHost/appsettings*.json
 
 # dotenv files
 .env

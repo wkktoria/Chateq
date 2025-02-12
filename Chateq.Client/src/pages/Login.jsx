@@ -16,7 +16,7 @@ function Login({ onLogin }) {
     setErrorMessage("");
 
     try {
-      const response = await fetch("http://localhost:5201/api/Auth/Login", {
+      const response = await fetch("https://localhost:7146/api/Auth/Login", {
         method: "POST",
         headers: {
           Accept: "*/*",

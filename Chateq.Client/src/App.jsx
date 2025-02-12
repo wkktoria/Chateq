@@ -28,7 +28,7 @@ function App() {
     if (isLoggedIn && !connection) {
       const token = localStorage.getItem("token");
       const connect = new HubConnectionBuilder()
-        .withUrl(`http://localhost:5201/messageHub?token=${token}`, {
+        .withUrl(`https://localhost:7146/messageHub?token=${token}`, {
           accessTokenFactory: () => token,
         })
         .withAutomaticReconnect()
@@ -50,7 +50,7 @@ function App() {
         if (isLoggedIn) {
           const token = localStorage.getItem("token");
           const response = await fetch(
-            "http://localhost:5201/api/Chat/GetPaginatedChat?chatName=Global&pageNumber=1&pageSize=20",
+            "https://localhost:7146/api/Chat/GetPaginatedChat?chatName=Global&pageNumber=1&pageSize=20",
             {
               method: "POST",
               headers: {
@@ -126,7 +126,7 @@ function App() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5201/api/Chat/GetPagnatedChat?chatName=${chatName}&pageNumber=${pageNumber}&pageSize=20`,
+        `https://localhost:7146/api/Chat/GetPagnatedChat?chatName=${chatName}&pageNumber=${pageNumber}&pageSize=20`,
         {
           method: "POST",
           headers: {

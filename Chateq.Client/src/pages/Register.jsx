@@ -19,7 +19,7 @@ const Register = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5201/api/Auth/Register", {
+      const response = await fetch("https://localhost:7146/api/Auth/Register", {
         method: "PUT",
         headers: {
           Accept: "*/*",

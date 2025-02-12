@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Application", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.MessageBroker", "Chateq.MessageBroker\Chateq.MessageBroker.csproj", "{B8BF0562-BFFB-4160-94DB-8B28A1719334}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.AppHost", "Chateq.AppHost\Chateq.AppHost.csproj", "{77D6439D-F65C-41A7-BD07-312204D10318}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{B8BF0562-BFFB-4160-94DB-8B28A1719334}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8BF0562-BFFB-4160-94DB-8B28A1719334}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8BF0562-BFFB-4160-94DB-8B28A1719334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D6439D-F65C-41A7-BD07-312204D10318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D6439D-F65C-41A7-BD07-312204D10318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D6439D-F65C-41A7-BD07-312204D10318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D6439D-F65C-41A7-BD07-312204D10318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
