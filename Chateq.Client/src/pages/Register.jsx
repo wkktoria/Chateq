@@ -29,7 +29,8 @@ const Register = () => {
       });
 
       if (!response.ok) {
-        const message = `Error: ${response.status}`;
+        var body = await response.json();
+        const message = `${body.message}`;
         throw new Error(message);
       }
 

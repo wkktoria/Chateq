@@ -26,6 +26,11 @@ public class AuthService(IUserRepository userRepository, IJwtService jwtService,
             var user = new User(registerUser.Username, HashPassword(registerUser.Password));
             await userRepository.AddUserAsync(user);
         }
+        catch (InvalidOperationException ex)
+        {
+            logger.LogError(ex, $"Error occurred while registering user with username: {registerUser.Username}");
+            throw;
+        }
         catch (Exception ex)
         {
             logger.LogError(ex, $"Error occurred while registering user with username: {registerUser.Username}");

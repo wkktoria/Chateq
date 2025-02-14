@@ -25,7 +25,7 @@ public class AuthController(IAuthService authService, ILogger<AuthController> lo
         {
             logger.LogError(ex,
                 $"An error occurred during registration for user with username: {registerUser.Username}");
-            return StatusCode(500, "An unexpected error occurred during registration.");
+            return StatusCode(500, new { message = "An unexpected error occurred during registration." });
         }
     }
 
@@ -44,7 +44,7 @@ public class AuthController(IAuthService authService, ILogger<AuthController> lo
         catch (Exception ex)
         {
             logger.LogError(ex, $"An error occurred during login for user with username: {loginModel.Username}");
-            return StatusCode(500, "An unexpected error occurred during login.");
+            return StatusCode(500, new { message = "An unexpected error occurred during login." });
         }
     }
 }
