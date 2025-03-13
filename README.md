@@ -17,12 +17,12 @@ Users can create accounts, log in, and view past conversations.
 ### Steps
 
 1. Configure database connections and secrets:
-    - [Chateq.API/appsettings.json](Chateq.API/appsettings.json)
-    - [Chateq.AppHost/appsettings.json](Chateq.AppHost/appsettings.json)
-    - [Chateq.MessageBroker/appsettings.json](Chateq.MessageBroker/appsettings.json)
-2. Run Kafka container: `docker-compose -f kafka.yml up`
-3. Run application: `dotnet run --project Chateq.AppHost`
+    - [src/Chateq.API/appsettings.json](src/Chateq.API/appsettings.json)
+    - [src/Chateq.AppHost/appsettings.json](src/Chateq.AppHost/appsettings.json)
+    - [src/Chateq.MessageBroker/appsettings.json](src/Chateq.MessageBroker/appsettings.json)
+2. Run Kafka container: `docker-compose -f docker/kafka.yml up`
+3. Run application: `dotnet run --project src/Chateq.AppHost`
     - Swagger should be available on: [https://localhost:7146/swagger/index.html](https://localhost:7146/swagger/index.html)
     - Aspire dashboard should be available on: [https://localhost:17098/](https://localhost:17098)
-4. Run client: `cd Chateq.Client && npm run dev`
+4. Run client: `cd client && npm run dev`
     - application should be available on [http://localhost:5173](http://localhost:5173)

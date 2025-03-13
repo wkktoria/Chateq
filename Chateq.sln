@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.API", "Chateq.API\Chateq.API.csproj", "{0E9BDDAD-E996-49E6-99C5-6D763442AD45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.API", "src\Chateq.API\Chateq.API.csproj", "{0E9BDDAD-E996-49E6-99C5-6D763442AD45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Domain", "Chateq.Core.Domain\Chateq.Core.Domain.csproj", "{5FF8AE6C-FEA0-4BE5-AF3D-A5D589E0CF47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Domain", "src\Chateq.Core.Domain\Chateq.Core.Domain.csproj", "{5FF8AE6C-FEA0-4BE5-AF3D-A5D589E0CF47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Infrastructure", "Chateq.Infrastructure\Chateq.Infrastructure.csproj", "{9FBBB45B-7EF7-48C7-8ADC-659087F26ABF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Infrastructure", "src\Chateq.Infrastructure\Chateq.Infrastructure.csproj", "{9FBBB45B-7EF7-48C7-8ADC-659087F26ABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Application", "Chateq.Core.Application\Chateq.Core.Application.csproj", "{8DC1E9A2-C328-4AF6-A0EB-6C3CE38DCC6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Application", "src\Chateq.Core.Application\Chateq.Core.Application.csproj", "{8DC1E9A2-C328-4AF6-A0EB-6C3CE38DCC6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.MessageBroker", "Chateq.MessageBroker\Chateq.MessageBroker.csproj", "{B8BF0562-BFFB-4160-94DB-8B28A1719334}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.MessageBroker", "src\Chateq.MessageBroker\Chateq.MessageBroker.csproj", "{B8BF0562-BFFB-4160-94DB-8B28A1719334}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.AppHost", "Chateq.AppHost\Chateq.AppHost.csproj", "{77D6439D-F65C-41A7-BD07-312204D10318}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.AppHost", "src\Chateq.AppHost\Chateq.AppHost.csproj", "{77D6439D-F65C-41A7-BD07-312204D10318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Application.UnitTests", "Chateq.Core.Application.UnitTests\Chateq.Core.Application.UnitTests.csproj", "{A003F7DB-5794-4B34-83C8-F46BB438B6CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chateq.Core.Application.UnitTests", "tests\Chateq.Core.Application.UnitTests\Chateq.Core.Application.UnitTests.csproj", "{A003F7DB-5794-4B34-83C8-F46BB438B6CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

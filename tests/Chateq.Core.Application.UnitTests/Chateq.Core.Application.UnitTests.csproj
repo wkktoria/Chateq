@@ -22,8 +22,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Chateq.Core.Application\Chateq.Core.Application.csproj" />
-      <ProjectReference Include="..\Chateq.Core.Domain\Chateq.Core.Domain.csproj" />
+      <ProjectReference Include="..\..\src\Chateq.Core.Application\Chateq.Core.Application.csproj" />
+      <ProjectReference Include="..\..\src\Chateq.Core.Domain\Chateq.Core.Domain.csproj" />
     </ItemGroup>
 
 </Project>

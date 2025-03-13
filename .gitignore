@@ -3,9 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
-Chateq.API/appsettings*.json
-Chateq.MessageBroker/appsettings*.json
-Chateq.AppHost/appsettings*.json
+src/Chateq.API/appsettings*.json
+src/Chateq.MessageBroker/appsettings*.json
+src/Chateq.AppHost/appsettings*.json
 
 # dotenv files
 .env
