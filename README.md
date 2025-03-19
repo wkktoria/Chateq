@@ -18,7 +18,6 @@ Users can create accounts, log in, and view past conversations.
 
 1. Configure database connections and secrets:
     - [src/Chateq.API/appsettings.json](src/Chateq.API/appsettings.json)
-    - [src/Chateq.AppHost/appsettings.json](src/Chateq.AppHost/appsettings.json)
     - [src/Chateq.MessageBroker/appsettings.json](src/Chateq.MessageBroker/appsettings.json)
 2. Run Kafka container: `docker-compose -f docker/kafka.yml up`
 3. Run application: `dotnet run --project src/Chateq.AppHost`
