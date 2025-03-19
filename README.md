@@ -22,6 +22,6 @@ Users can create accounts, log in, and view past conversations.
 2. Run Kafka container: `docker-compose -f docker/kafka.yml up`
 3. Run application: `dotnet run --project src/Chateq.AppHost`
     - Swagger should be available on: [https://localhost:7146/swagger/index.html](https://localhost:7146/swagger/index.html)
-    - Aspire dashboard should be available on: [https://localhost:17098/](https://localhost:17098)
+    - Aspire dashboard should be available on: [https://localhost:17098](https://localhost:17098)
 4. Run client: `cd client && npm run dev`
     - application should be available on [http://localhost:5173](http://localhost:5173)
