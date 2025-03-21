@@ -126,7 +126,7 @@ function App() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://localhost:7146/api/Chat/GetPagnatedChat?chatName=${chatName}&pageNumber=${pageNumber}&pageSize=20`,
+        `https://localhost:7146/api/Chat/GetPaginatedChat?chatName=${chatName}&pageNumber=${pageNumber}&pageSize=20`,
         {
           method: "POST",
           headers: {
