@@ -82,17 +82,16 @@ function Chat({ messages, onSendMessage, currentChat, onLoadOlderMessages }) {
     }
   };
 
-  const handleSendMessage = () => {
-    scrollToBottom();
-
+  const handleSendMessage = async () => {
     if (!chat || !chat.id) {
       console.error("No chat selected or chat's id is missing");
       return;
     }
 
     if (message.trim()) {
-      onSendMessage(chat.id, message);
+      await onSendMessage(chat.id, message);
       setMessage("");
+      scrollToBottom();
     }
   };
 
