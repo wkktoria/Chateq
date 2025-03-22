@@ -75,7 +75,7 @@ function Chat({ messages, onSendMessage, currentChat, onLoadOlderMessages }) {
 
   const fetchOlderMessages = async () => {
     const newPage = page + 1;
-    const success = await onLoadOlderMessages(chat.id, newPage);
+    const success = await onLoadOlderMessages(chat.name, newPage);
 
     if (success) {
       setPage(newPage);

@@ -64,6 +64,7 @@ function App() {
           if (response.ok) {
             const data = await response.json();
             const formattedMessages = data.messages.map((msg) => ({
+              id: msg.id,
               sender: msg.sender,
               message: msg.messageText,
               createdAt: msg.createdAt,
@@ -140,13 +141,20 @@ function App() {
       if (response.ok) {
         const data = await response.json();
         const newMessages = data.messages.map((msg) => ({
+          id: msg.id,
           sender: msg.sender,
           message: msg.messageText,
           createdAt: msg.createdAt,
         }));
 
         if (newMessages.length > 0) {
-          setMessages((prevMessages) => [...newMessages, ...prevMessages]);
+          setMessages((prevMessages) => {
+            const prevMessagesIds = new Set(prevMessages.map((msg) => msg.id));
+            const filteredNewMessages = newMessages.filter(
+              (msg) => !prevMessagesIds.has(msg.id)
+            );
+            return [...prevMessages, ...filteredNewMessages];
+          });
         }
 
         return newMessages.length === 20;
