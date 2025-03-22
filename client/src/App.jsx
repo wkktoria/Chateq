@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Chat from "./pages/Chat";
+import chatService from "./services/chat";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,46 +46,19 @@ function App() {
   }, [isLoggedIn, connection]);
 
   useEffect(() => {
-    const fetchInitialMessages = async () => {
-      try {
-        if (isLoggedIn) {
-          const token = localStorage.getItem("token");
-          const response = await fetch(
-            "https://localhost:7146/api/Chat/GetPaginatedChat?chatName=Global&pageNumber=1&pageSize=20",
-            {
-              method: "POST",
-              headers: {
-                Accept: "*/*",
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          if (response.ok) {
-            const data = await response.json();
-            const formattedMessages = data.messages.map((msg) => ({
-              id: msg.id,
-              sender: msg.sender,
-              message: msg.messageText,
-              createdAt: msg.createdAt,
-            }));
-
-            setSelectedChat({ id: data.id, name: data.name });
-            setMessages(formattedMessages);
-          } else {
-            console.error(
-              "Error while fetching messages from API:",
-              response.status
-            );
-          }
-        }
-      } catch (error) {
-        console.error("Error while connecting to API:", error);
-      }
-    };
-
-    fetchInitialMessages();
+    if (isLoggedIn) {
+      const token = localStorage.getItem("token");
+      chatService.getPaginatedChat("Global", 1, 20, token).then((data) => {
+        const formattedMessages = data.messages.map((msg) => ({
+          id: msg.id,
+          sender: msg.sender,
+          message: msg.messageText,
+          createdAt: msg.createdAt,
+        }));
+        setSelectedChat({ id: data.id, name: data.name });
+        setMessages(formattedMessages);
+      });
+    }
   }, [isLoggedIn]);
 
   useEffect(() => {
@@ -124,22 +98,10 @@ function App() {
   };
 
   const onLoadOlderMessages = async (chatName, pageNumber) => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await fetch(
-        `https://localhost:7146/api/Chat/GetPaginatedChat?chatName=${chatName}&pageNumber=${pageNumber}&pageSize=20`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "*/*",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (response.ok) {
-        const data = await response.json();
+    const token = localStorage.getItem("token");
+    chatService
+      .getPaginatedChat(chatName, pageNumber, 20, token)
+      .then((data) => {
         const newMessages = data.messages.map((msg) => ({
           id: msg.id,
           sender: msg.sender,
@@ -158,14 +120,10 @@ function App() {
         }
 
         return newMessages.length === 20;
-      } else {
-        console.error("Error while loading older messages:", response.status);
+      })
+      .catch(() => {
         return false;
-      }
-    } catch (error) {
-      console.error("Error while connecting to API:", error);
-      return false;
-    }
+      });
   };
 
   return (
