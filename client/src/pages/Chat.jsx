@@ -31,7 +31,7 @@ function Chat({ messages, onSendMessage, currentChat, onLoadOlderMessages }) {
   }, [messages, hasInitialLoad]);
 
   useEffect(() => {
-    if (hasInitialLoad && !isScrolledToBottom()) {
+    if (hasInitialLoad && isScrolledToBottom()) {
       scrollToBottom();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
