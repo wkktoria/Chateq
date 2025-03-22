@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import authService from "../services/auth";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -13,33 +14,17 @@ const Register = () => {
     setErrorMessage("");
     setSuccessMessage("");
 
-    const data = {
-      username: username,
-      password: password,
-    };
-
-    try {
-      const response = await fetch("https://localhost:7146/api/Auth/Register", {
-        method: "PUT",
-        headers: {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+    authService
+      .register(username, password)
+      .then((data) => {
+        setSuccessMessage(data.message);
+      })
+      .catch((error) => {
+        setErrorMessage(
+          error.response.data.message ||
+            "There was a problem during the registration."
+        );
       });
-
-      if (!response.ok) {
-        var body = await response.json();
-        const message = `${body.message}`;
-        throw new Error(message);
-      }
-
-      setSuccessMessage("Registration has been successful!");
-    } catch (error) {
-      setErrorMessage(
-        `There was a problem during the registration: ${error.message}`
-      );
-    }
   };
 
   return (

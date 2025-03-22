@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import authService from "../services/auth";
 
 // eslint-disable-next-line react/prop-types
 function Login({ onLogin }) {
@@ -15,31 +16,20 @@ function Login({ onLogin }) {
     setIsLoading(true);
     setErrorMessage("");
 
-    try {
-      const response = await fetch("https://localhost:7146/api/Auth/Login", {
-        method: "POST",
-        headers: {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        const authData = await response.json();
-        onLogin(authData);
+    authService
+      .login(username, password)
+      .then((data) => {
+        onLogin(data);
         navigate("/chat");
-      } else {
-        const error = await response.json();
+      })
+      .catch((error) => {
         setErrorMessage(
-          error.message || "The login attempt was not successful."
+          error.response.data.message || "The login attempt was not successful."
         );
-      }
-    } catch (error) {
-      setErrorMessage(`There was a problem during the login: ${error.message}`);
-    } finally {
-      setIsLoading(false);
-    }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
